@@ -59,14 +59,16 @@ final class ProductController {
 		}
 		return ProductDTO.NULL_VALUE;
 	}
-
+//	isPresent significa se encontrar. Se ele encontrar o produto ele transforma em 
+//	DTO, se não encontrar retorna nulo.Muitos desenvolvedores colocariam -> return null;
+//	Porém esta forma é "errada", por isso foi criado uma constante, um objeto que que não será nulo e esse objeto tem atributos declarados como valores nulos
 	ProductDTO removeProduct(final Long id) {
 		final Optional<ProductEntity> optionalProduct = this.productRepository.findById(id);
 		if (optionalProduct.isPresent()) {
 			final ProductEntity productEntity = optionalProduct.get();
 			this.productRepository.delete(productEntity);
 			return ProductController.toDTO(productEntity);
-		}
+		} 
 		return ProductDTO.NULL_VALUE;
 	}
 

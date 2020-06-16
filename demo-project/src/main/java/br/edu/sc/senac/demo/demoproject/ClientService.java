@@ -17,10 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/v1/client")
-public class ClientService {
+final class ClientService {
 	
-	private List<ClientDTO> clients = new ArrayList<>();
+	private final ClientController clientController;
 	
+	public ClientService(final ClientController clientController) {
+		this.clientController = clientController;
+	}
+		
 	@PostMapping("/add-default")
 	public void addDefault(){
 		
@@ -41,58 +45,44 @@ public class ClientService {
 	}
 	
 	@GetMapping("/list")
-	public List<ClientDTO> list () {
+	public List<ClientDTO> list() {
 //	Poderia ser feito com return this.clients (sendo opcional)
-		return clients;
-    
+		return clientController.getAllClients();
     }
     
 	@GetMapping("/{id}/details")
 	public ResponseEntity<ClientDTO>getClient(@PathVariable Long id) {
-		if (id >= clients.size() || id < 0) {
-			//if (id >= clients.size());
-			//return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			//}
-			//if (id < 0) {
-			//return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			//}
-			
-			//if(id > -1 && id < client.size());
+		ClientDTO client = this.clientController.getClient(id);
+		if (client.NULL_VALUE.equals(client)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		int index = id.intValue();
-		ClientDTO client = clients.get(index);
-		return new ResponseEntity<>(client, HttpStatus.OK);
-			
+			return new ResponseEntity<>(client, HttpStatus.OK);
 		}
 	
-	@DeleteMapping("/{id}")
-		public ResponseEntity<ClientDTO> removeClient(@PathVariable Long id){
-		if(id >= clients.size() || id < 0){
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		int index = id.intValue();
-		ClientDTO client = clients.remove(index);
-		return new ResponseEntity<>(client, HttpStatus.OK);
-	}
-
-	
-//	@PostMapping("/param") Minha tentantiva funcionou, abaixo está o código do professor
+//	@PostMapping("/param") Minha tentativa funcionou, abaixo está o código do professor
 //		public ClientDTO id (@RequestParam("nome") String nome, @RequestParam("dataNascimento") String dataNascimento, @RequestParam("email") String email) {
 //			return new ClientDTO (nome, dataNascimento, email);
 //	}
 //}
 	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<ClientDTO> removeClient(@PathVariable Long id){
+		if(id >= clients.size() || id < 0){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	int index = id.intValue();
+	ClientDTO client = clients.remove(index);
+	return new ResponseEntity<>(client, HttpStatus.OK);
+}
+
+	@PostMapping("/addpayload")
+	public Long addClient(@RequestBody ClientDTO client) {
+		return this.clientController.insertClient(client);
+	}
+	
 	@PostMapping("/add")
 		public Long addClient(@RequestParam("nome") String nome, @RequestParam("dataNascimento") String dataNascimento, @RequestParam("email") String email) { 
 		ClientDTO client = new ClientDTO(nome, dataNascimento, email);
-		clients.add(client);
-		Long id = Long.valueOf(clients.size() -1);
-		return id;
-	}
-	
-	@PostMapping("/addpayload")
-	public Long addClient(@RequestBody ClientDTO client) {
 		clients.add(client);
 		Long id = Long.valueOf(clients.size() -1);
 		return id;

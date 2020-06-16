@@ -2,6 +2,8 @@ package br.edu.sc.senac.demo.demoproject;
 
 public class ClientDTO {
 	
+	public static final ClientDTO NULL_VALUE = new ClientDTO("", "", "");
+	
 	private String nome;
     private String dataNascimento;
     private String email;

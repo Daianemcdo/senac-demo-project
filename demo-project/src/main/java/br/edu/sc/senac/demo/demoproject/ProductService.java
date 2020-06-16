@@ -50,9 +50,37 @@ public final class ProductService {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<ProductDTO> removeProduct(@PathVariable final Long id) {
 		final ProductDTO removedProduct = this.productController.removeProduct(id);
+// 		A linha comentada do if é a mesma da linha 57 a 59, porém a linha comentada
+//		é a forma mais correta de implementação se um objeto é nulo ou não
+//		o .equals método para comparar se dois objetos são iguais
+//		Se aquele objeto que retornou da ProductController for null value ele vai ser
+//		iquals e sendo iquals entra dentro do método
+		
 		if (removedProduct.equals(ProductDTO.NULL_VALUE)) {
-//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+		
+//		Esse removedProduct == null é uma má forma de programação, pois a chance de esconder
+//		um bug é alto, se o objeto for nulo por algum bug esse código está escondendo
+//		removendo esse bug. Por isso ao invés do remove product retornar nulo
+//		ele vai retornar um objeto que representa o objeto nulo. Na constante NULL_VALUE(estático)
+//		os parâmetros que estão sendo passados no construtor são valores nulos -> (""),(0)
+//		não tem valores, está sendo criado uma referencia de um objeto productDTO, 
+//		dizendo que este objeto vai representar um objeto nulo
+		
+		//if (id >= clients.size());
+		//return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		//}
+		//if (id < 0) {
+		//return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		//}
+		
+		//if(id > -1 && id < client.size());
+		
+//		if (removedProduct == null) {
+//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//		}
+			
 		return new ResponseEntity<>(removedProduct, HttpStatus.OK);
 	}
 
