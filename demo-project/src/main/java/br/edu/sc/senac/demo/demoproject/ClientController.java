@@ -16,7 +16,7 @@ final class ClientController {
 	}
 	
 	ClientDTO getClient(Long id) {
-		if (isExistClient(id)) {
+		if (isNotExistClient(id)) {
 			return ClientDTO.NULL_VALUE;
 		}
 		int index = id.intValue();
@@ -25,7 +25,7 @@ final class ClientController {
 	}
 	
 	ClientDTO removeClient(Long id) {
-		if (isExistClient(id)){
+		if (isNotExistClient(id)){
 			return ClientDTO.NULL_VALUE;
 		}
 		int index = id.intValue();
@@ -40,7 +40,7 @@ final class ClientController {
 		}
 	
 	ClientDTO updateClient(final Long id, ClientDTO updateClient) {
-		if (isExistClient(id)){
+		if (isNotExistClient(id)){
 			return ClientDTO.NULL_VALUE;
 		}
 		int index = id.intValue();
@@ -49,7 +49,7 @@ final class ClientController {
 		return oldClient;
 	}
 	
-	private boolean isExistClient(final Long id) {
+	private boolean isNotExistClient(final Long id) {
 		return id >= clients.size() || id < 0;
 	}
 		
