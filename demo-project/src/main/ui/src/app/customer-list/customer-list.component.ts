@@ -18,6 +18,11 @@ export class CustomerListComponent {
     name: "Platão",
     born: "700 A.C",
     email: "platao@sc.senac.br"
+  },
+  {
+    name: "Daiane",
+    born: "24/10/2001",
+    email: "daiane@sc.senac.br"
   }
 ];
 }
