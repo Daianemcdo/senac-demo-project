@@ -1,0 +1,65 @@
+<h2>Customers</h2>
+
+<!--
+<table>
+
+  <tr>
+    <td>Nome</td>
+    <td>Data de Nascimento</td>
+    <td>Email</td>
+  </tr>
+
+    <tr>
+      <td>Daiane</td>
+      <td>24/01/2000</td>
+      <td>daianemcdo@sc.senac.com</td>
+      </tr>
+
+      <tr>
+        <td>Mariana</td>
+        <td>02/03/2000</td>
+        <td>marianamfd@sc.senac</td>
+      </tr>
+
+      <tr>
+        <td>Paula</td>
+        <td>15/08/2000</td>
+        <td>paulalmn@sc.senac</td>
+      </tr>
+
+<tr *ngFor="let customer of customers">
+    <td>{{customer.name}}</td>
+    <td>{{customer.born}}</td>
+    <td>{{customer.email}}</td>
+  </tr>
+
+  </table>
+-->
+
+<!--
+<div *ngFor="let customer of customers">
+  <div><b style="color:royalblue">Nome</b></div>
+  <a [title]="customer.name + ' details'">
+    <p>{{customer.name}}</p>
+  </a>
+
+  <div><b style="color:royalblue">Data de Nascimento</b></div>
+  <p>{{customer.born}}</p>
+
+  <div><b style="color:royalblue">Email</b></div>
+  <p>{{customer.email}}</p>
+-->
+
+<div *ngFor="let customer of customers">
+  <div><b style="color:royalblue">Nome</b></div>
+  <a [title]="customer.name + ' details'">
+    <p> {{customer.name}}</p>
+
+    <div><b style="color:royalblue">Data de Nascimento</b></div>
+    <a [title]="customer.born + ' details'">
+      <p> {{customer.born}}</p>
+
+      <div><b style="color:royalblue">Email</b></div>
+      <a [title]="customer.email + ' details'">
+      <p> {{customer.email}}</p>
+  </a>

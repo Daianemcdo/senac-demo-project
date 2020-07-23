@@ -1,5 +1,6 @@
 package br.edu.sc.senac.demo.demoproject;
 
+
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -60,6 +61,10 @@ final class ClientEntity implements Serializable {
 		if (dataNascimento != null) {
 			this.dataNascimento = dataNascimento;
 		}
+	}
+	
+	public String getDataNascimento() {
+		return this.dataNascimento;
 	}
 
 	public String getEmail() {

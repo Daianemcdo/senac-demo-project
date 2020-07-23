@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/client")
 final class ClientService {
 	
+	//List<ClientDTO> clients;
+	
 	private final ClientController clientController;
 	
 	ClientService(final ClientController clientController) {
@@ -28,28 +30,28 @@ final class ClientService {
 	@PostMapping("/add-default")
 	public void addDefault(){
 	
-		addClient("Everton", "03/05/1900", "everton@senac.br");
+/*		addClient("Everton", "03/05/1900", "everton@senac.br");
 		addClient("Marciel", "05/06/1980", "marciel@senac.br");
 		addClient("Gabriel", "01/09/2005", "gabriel@senac.br");
 		addClient("Ricardo", "10/07/1950", "ricardo@senac.br");
 		addClient("Yago", "06/11/1999", "yago@senac.br");
-
+*/
 	}
 
 		
-/*		ClientDTO client = new ClientDTO("Everton", "03/05/1900", "everton@senac.br");
-	    clients.add(client);
-
-	    client = new ClientDTO("Marciel", "05/06/2001", "marciel@senac.br");
-	    clients.add(client);
-
-	    client = new ClientDTO("Gabriel", "02/08/2005", "gabriel@senac.br");
-	    clients.add(client);
-
-	    client = new ClientDTO("Ricardo", "10/06/1995", "ricardo@senac.br");
+/*		ClientDTO client = new ClientDTO("Daiane", "24/10/2001", "daiane@senac.com");
 	    clients.add(client);
 	    
-	    client = new ClientDTO("Yago", "03/07/1920", "yago@senac.br");
+	    client = new ClientDTO("Daiane", "24/10/2001", "daiane@senac.com");
+	    clients.add(client);
+	    
+	    client = new ClientDTO("Daiane", "24/10/2001", "daiane@senac.com");
+	    clients.add(client);
+	    
+	    client = new ClientDTO("Daiane", "24/10/2001", "daiane@senac.com");
+	    clients.add(client);
+	  
+	    client = new ClientDTO("Daiane", "24/10/2001", "daiane@senac.com");
 	    clients.add(client);
 	}
 */
@@ -105,5 +107,3 @@ final class ClientService {
 			
 		}
 	}
-
-		

@@ -19,9 +19,11 @@ export class ProductListComponent implements OnInit {
     private productService: ProductsService
   ) {  }
 
+//Cria um objeto
   ngOnInit() {
     this.newProduct = new /*Object*/Product();
-    this.getProducts();
+    this.getProducts();//retorna a lista de produtos listados
+
   }
 
   onSubmit(form: NgForm) {
