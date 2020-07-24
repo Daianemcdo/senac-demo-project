@@ -20,9 +20,10 @@ export class CustomerListComponent {
     email: "platao@sc.senac.br"
   },
   {
-    name: "Daiane",
-    born: "24/10/2001",
-    email: "daiane@sc.senac.br"
+    name: "Tales de Mileto",
+    born: "625 A.C",
+    email: ""
   }
 ];
+
 }

@@ -115,9 +115,10 @@ app-top-bar {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
-app-top-bar h1 {
+app-top-bar h1, h4 {
   color: white;
   margin: 0;
 }

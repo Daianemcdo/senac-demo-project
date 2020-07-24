@@ -8,7 +8,6 @@
     <td>Data de Nascimento</td>
     <td>Email</td>
   </tr>
-
     <tr>
       <td>Daiane</td>
       <td>24/01/2000</td>
@@ -46,29 +45,11 @@
   <div><b style="color:royalblue">Data de Nascimento</b></div>
   <p>{{customer.born}}</p>
 
-  <div><b style="color:royalblue">Email</b></div>
-  <p>{{customer.email}}</p>
-
-
-
-
-
+ <div><b style="color:royalblue">Email</b></div>
+ <p>{{customer.email}}</p>
   
-
-
-<!--
-<div *ngFor="let customer of customers">
-  <div><b style="color:royalblue">Nome</b></div>
-  <a [title]="customer.name + ' details'">
-    <p> {{customer.name}}</p>
-
-    <div><b style="color:royalblue">Data de Nascimento</b></div>
-    <a [title]="customer.born + ' details'">
-      <p> {{customer.born}}</p>
-
-      <div><b style="color:royalblue">Email</b></div>
-      <a [title]="customer.email + ' details'">
-      <p> {{customer.email}}</p>
-  </a>
+  <!-- 
+    <p *ngIf="customer.email!=null">
+    {{customer.email}}
+  </p>
 -->
- 
