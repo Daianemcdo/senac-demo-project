@@ -35,8 +35,8 @@
   </table>
 -->
 
-
-<div *ngFor="let customer of customers">
+<!--
+  <div *ngFor="let customer of customers">
   <div><b style="color:royalblue">Nome</b></div>
   <a [title]="customer.name + ' details'">
     <p>{{customer.name}}</p>
@@ -45,11 +45,54 @@
   <div><b style="color:royalblue">Data de Nascimento</b></div>
   <p>{{customer.born}}</p>
 
- <div><b style="color:royalblue">Email</b></div>
- <p>{{customer.email}}</p>
-  
-  <!-- 
-    <p *ngIf="customer.email!=null">
-    {{customer.email}}
-  </p>
+ <div><b style="color:royalblue">Email</b>
+ <p *ngIf="customer.email">
+  {{customer.email}}
+</p>
+</div>
 -->
+
+
+<!--
+<form>
+  <div>
+    <label for="name">NAME</label>
+    <input type="text" id="name" placeholder="Name" required>
+  </div>
+  <div>
+    <label for="dateBirth">DATE OF BIRTH</label>
+    <input type="text" id="dateBirth" placeholder="Date Birth">
+  </div>
+  <div>
+    <label for="email">EMAIL</label>
+    <input type="text" id="email" placeholder="Email" required>
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+-->
+
+<form #customerForm="ngForm" (ngSubmit)="OnSubmit(customerForm)">
+  <div>
+  <label for='name'>Name</label>
+    <input #customerName ngModel name='customerName' required placeholder='customer name' />
+  </div>
+
+  <div>
+  <label for='dateBirth'>Date Of Birth</label>
+    <input #customerDateBirth ngModel dateBirth='customerDateBirth' required placeholder="customer date of bitrh" />
+  </div>
+
+  <div>
+    <label for='email'>Email</label>
+    <input #customerEmail ngModel email='customerEmail' required placeholder="customer email" />
+  </div>
+    <button type="submit" [disabled]="!customerForm.valid">Submit</button>
+  </form>
+
+  <p>
+    {{ customerName.value }}
+    {{ customerDateBirth.value }}
+    {{ customerEmail.value }}
+  </p>

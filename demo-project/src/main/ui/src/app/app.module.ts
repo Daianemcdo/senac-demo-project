@@ -13,6 +13,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { MeuPrimeiroComponent } from './meu-primeiro/meu-primeiro.component';
 import { CustomerListComponent } from './customer-list/customer-list.component'
 
+
 @NgModule({
   imports: [
     BrowserModule,

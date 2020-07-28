@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
   styleUrls: ['./customer-list.component.css']
 })
+
+
 export class CustomerListComponent {
 
+  
   customers = [
     {
     name: "Aristóteles",
@@ -22,7 +26,7 @@ export class CustomerListComponent {
   {
     name: "Tales de Mileto",
     born: "625 A.C",
-    email: ""
+    email: null
   }
 ];
 

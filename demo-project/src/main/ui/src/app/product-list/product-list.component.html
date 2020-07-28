@@ -31,6 +31,16 @@
     <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submit</button>
 </form>
 
+<div *ngFor="let product of products">
+    <div><b style="color:royalblue">Nome</b></div>
+      <p>{{customer.name}}</p>
+  
+    <div><b style="color:royalblue">Data de Nascimento</b></div>
+    <p>{{customer.born}}</p>
+  
+   <div><b style="color:royalblue">Email</b></div>
+   <p>{{customer.email}}</p>
+
 <div *ngFor="let product of products;">
 
   <h3>
@@ -44,6 +54,7 @@
   </p>
 
 </div>
+
 
 <!--<a routerLink="/customers">Customers</a>-->
 <!-- 
