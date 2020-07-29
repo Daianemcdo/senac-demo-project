@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -8,26 +8,46 @@ import { NgForm } from '@angular/forms';
 })
 
 
-export class CustomerListComponent {
+export class CustomerListComponent implements OnInit {
 
-  
-  customers = [
-    {
-    name: "Aristóteles",
-    born: "500 A.C",
-    email: "aristoteles@sc.senac.br"
-  },
+  private customers: Customer[];
 
-  {
-    name: "Platão",
-    born: "700 A.C",
-    email: "platao@sc.senac.br"
-  },
-  {
-    name: "Tales de Mileto",
-    born: "625 A.C",
-    email: null
+  constructor() { }
+
+  ngOnInit() {
+    this.customers = [
+      {
+        name: "Aristóteles",
+        dateBirth: "500 A.C",
+        email: "aristoteles@sc.senac.br"
+      },
+
+      {
+        name: "Platão",
+        dateBirth: "700 A.C",
+        email: "platao@sc.senac.br"
+      },
+      {
+        name: "Tales de Mileto",
+        dateBirth: "625 A.C",
+        email: "tales@sc.senac.br"
+      }
+    ];
   }
-];
 
+  onSubmit(customerForm: NgForm, customerName: String, dateBirth: String, email: String) {
+    if (customerForm.valid) {
+      let newCustomer = new Customer();
+      newCustomer.name = customerName;
+      newCustomer.dateBirth = dateBirth;
+      newCustomer.email = email;
+      this.customers.push(newCustomer);
+    }
+  }
+}
+
+export class Customer {
+  name: String;
+  dateBirth: String;
+  email: String;
 }
