@@ -75,22 +75,20 @@
 
 
 
-<form #customerForm="ngForm"
-  (ngSubmit)="onSubmit(customerForm, customerName.value, customerDateBirth.value, customerEmail.value)">
+<form #customerForm="ngForm"(ngSubmit)="onSubmit(customerForm)">
   <div>
     <label for="customerName">Name</label>
-    <input #customerName="ngModel" ngModel name="customerName" required placeholder="customer name" />
+    <input #customerName="ngModel" [(ngModel)]="newCustomer.name" name="customerName" required placeholder="customer name" />
   </div>
 
   <div>
     <label for="customerDateBirth">Date Of Birth</label>
-    <input #customerDateBirth="ngModel" ngModel name="customerDateBirth" required
-      placeholder="customer date of bitrh" />
+    <input #customerDateBirth="ngModel" [(ngModel)]="newCustomer.dateBirth" name="customerDateBirth" required placeholder="customer date of bitrh" />
   </div>
 
   <div>
     <label for="customerEmail">Email</label>
-    <input #customerEmail="ngModel" ngModel name="customerEmail" required placeholder="customer email" />
+    <input #customerEmail="ngModel" [(ngModel)]="newCustomer.email" name="customerEmail" required placeholder="customer email" />
   </div>
   <button type="submit" [disabled]="!customerForm.valid">Submit</button>
 </form>

@@ -12,6 +12,8 @@ export class CustomerListComponent implements OnInit {
 
   private customers: Customer[];
 
+  private newCustomer: Customer;
+
   constructor() { }
 
   ngOnInit() {
@@ -33,15 +35,14 @@ export class CustomerListComponent implements OnInit {
         email: "tales@sc.senac.br"
       }
     ];
+    this.newCustomer = new Customer();
   }
 
-  onSubmit(customerForm: NgForm, customerName: String, dateBirth: String, email: String) {
-    if (customerForm.valid) {
-      let newCustomer = new Customer();
-      newCustomer.name = customerName;
-      newCustomer.dateBirth = dateBirth;
-      newCustomer.email = email;
-      this.customers.push(newCustomer);
+
+  onSubmit(customerForm: NgForm) {
+    if (customerForm.valid) {      
+      this.customers.push(this.newCustomer);
+      this.newCustomer = new Customer();
     }
   }
 }
