@@ -94,8 +94,8 @@
 </form>
 
 
-<div *ngFor="let customer of customers">
-  <a [title]="customer.name + ' details'"></a>
+<div *ngFor="let customer of customers; let id=index">
+  <a [title]="customer.name + ' details'" [routerLink]="['/customers', id]">
 
     <p><b style="color: royalblue">NAME</b></p>
     <p>{{ customer.name }}</p>
@@ -105,4 +105,5 @@
 
     <p><b style="color: royalblue">EMAIL</b></p>
     <p>{{ customer.email }}</p>
+  </a>
 </div>    

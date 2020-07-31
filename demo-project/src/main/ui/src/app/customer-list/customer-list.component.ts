@@ -16,9 +16,26 @@ export class CustomerListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    this.customers = [
-      {
+  ngOnInit() { 
+    this.customers = customerCollection;
+    this.newCustomer = new Customer();
+  }
+
+  onSubmit(customerForm: NgForm) {
+    if (customerForm.valid) {
+      this.customers.push(this.newCustomer);
+      this.newCustomer = new Customer();
+    }
+  }
+}
+  export class Customer {
+    name: String;
+    dateBirth: String;
+    email: String;
+  }
+
+    export const customerCollection = [
+     /* {
         name: "Aristóteles",
         dateBirth: "500 A.C",
         email: "aristoteles@sc.senac.br"
@@ -33,22 +50,7 @@ export class CustomerListComponent implements OnInit {
         name: "Tales de Mileto",
         dateBirth: "625 A.C",
         email: "tales@sc.senac.br"
-      }
+      }*/
     ];
-    this.newCustomer = new Customer();
-  }
 
 
-  onSubmit(customerForm: NgForm) {
-    if (customerForm.valid) {      
-      this.customers.push(this.newCustomer);
-      this.newCustomer = new Customer();
-    }
-  }
-}
-
-export class Customer {
-  name: String;
-  dateBirth: String;
-  email: String;
-}

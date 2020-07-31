@@ -26,10 +26,11 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+// Chamada para o BackEnd  
   loadProduct(productId: Number) {
 //    this.product = products[productId];
     this.productService.getProduct(productId).subscribe(
-      product => this.product = product
+     product => this.product = product
     );
   }
 

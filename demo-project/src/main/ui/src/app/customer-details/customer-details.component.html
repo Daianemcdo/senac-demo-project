@@ -1,0 +1,12 @@
+<h2>Customer Details</h2>
+
+<div *ngIf="customer">
+  <p>{{ customer.name }}</p>
+  <p>{{ customer.dateBirth }}</p>
+  <p>{{ customer.email }}</p>
+
+  <div>
+      <button (click)="back()">Back</button>
+      <button (click)="delete(customer)" style="margin:5px;">Delete</button>
+    </div>
+</div>
