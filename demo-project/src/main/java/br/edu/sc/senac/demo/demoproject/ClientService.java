@@ -1,5 +1,6 @@
 package br.edu.sc.senac.demo.demoproject;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -64,14 +65,14 @@ final class ClientService {
 
 	@GetMapping("/{id}/details")
 	public ResponseEntity<ClientDTO>getClient(@PathVariable Long id) {
-		ClientDTO client = this.clientController.getClient(id);
-		if (client.NULL_VALUE.equals(client)) {
+		final ClientDTO client = this.clientController.getClient(id);
+		if (client.equals(ClientDTO.NULL_VALUE)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 			return new ResponseEntity<>(client, HttpStatus.OK);
 		}
 	
-	@DeleteMapping("/{id}")
+/*	@DeleteMapping("/{id}")
 	public ResponseEntity<ClientDTO> removeClient(@PathVariable Long id){
 		ClientDTO removedClient = this.clientController.removeClient(id);
 		if (ClientDTO.NULL_VALUE.equals(removedClient)) {
@@ -79,19 +80,19 @@ final class ClientService {
 		}
 		return new ResponseEntity<>(removedClient, HttpStatus.OK);
 	}
-	
+	*/
 	@PostMapping("/add")
 		public Long addClient(@RequestParam("nome") String nome, @RequestParam("dataNascimento") String dataNascimento, @RequestParam("email") String email) { 
 		ClientDTO client = new ClientDTO(nome, dataNascimento, email);
 		return this.clientController.addClient(client);
 	}
 	
-	@PostMapping("/addpayload")
-	public Long addClient(@RequestBody ClientDTO client) {
-		return this.clientController.addClient(client); 
-	}
+//	@PostMapping("/addpayload")
+//	public Long addClient(@RequestBody ClientDTO client) {
+//		return this.clientController.addClient(client); 
+//	}
 
-	@PutMapping("/{id}")
+/*	@PutMapping("/{id}")
 	public ResponseEntity<ClientDTO> updateClient(@PathVariable Long id, @RequestBody ClientDTO updateClient){
 		ClientDTO oldClient = this.clientController.updateClient(id, updateClient);
 		if (ClientDTO.NULL_VALUE.equals(oldClient)) {
@@ -99,5 +100,5 @@ final class ClientService {
 		}
 		return new ResponseEntity<>(oldClient, HttpStatus.OK);
 			
-		}
+		}*/
 	}

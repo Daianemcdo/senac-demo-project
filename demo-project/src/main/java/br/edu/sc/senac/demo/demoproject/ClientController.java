@@ -57,7 +57,7 @@ final class ClientController {
 		this.clientRepository = clientRepository;
 	}
 
-	private static void updateEntityFromDTO(final ClientDTO clientDTO, final ClientEntity clientEntity) {
+/*	private static void updateEntityFromDTO(final ClientDTO clientDTO, final ClientEntity clientEntity) {
 		clientEntity.setNome(clientDTO.getNome());
 		clientEntity.setDataNascimento(clientDTO.getdataNascimento());
 		clientEntity.setEmail(clientDTO.getemail());
@@ -69,7 +69,7 @@ final class ClientController {
 		final String email= clientDTO.getemail();
 		return new ClientEntity(nome, dataNascimento, email);
 	}
-
+*/
 	private static ClientDTO toDTO(final ClientEntity clientEntity) {
 		final Long id = clientEntity.getClientId();
 		final String nome = clientEntity.getNome();
@@ -79,16 +79,15 @@ final class ClientController {
 	}
 
 	List<ClientDTO> getAllClients() {
-		final List<ClientDTO> clients = new ArrayList<>();
-		 final Iterable<ClientEntity> entities = this.clientRepository.findAll();
-		  for (final ClientEntity clientEntity : entities) {
-		  clients.add(ClientController.toDTO(clientEntity)); }
+		 //final Iterable<ClientEntity> entities = this.clientRepository.findAll();
+		// for (final ClientEntity clientEntity : entities) {
+		//clients.add(ClientController.toDTO(clientEntity)); }
 
 		return clients;
 	}
 
 	ClientDTO getClient(final Long id) {
-		Optional<ClientEntity> optionalClient = this.clientRepository.findById(id);
+		final Optional<ClientEntity> optionalClient = this.clientRepository.findById(id);
 		if (optionalClient.isPresent()) {
 			return ClientController.toDTO(optionalClient.get());
 		}
@@ -106,13 +105,13 @@ final class ClientController {
 		return ClientDTO.NULL_VALUE;
 	}
 
-	Long insertClient(final ClientDTO clientDTO) {
+/*	Long insertClient(final ClientDTO clientDTO) {
 		final ClientEntity clientEntity = ClientController.toEntity(clientDTO);
 		this.clientRepository.save(clientEntity);
 		return clientEntity.getClientId();
 	}
-
-	ClientDTO updateClient(final Long id, final ClientDTO clientDTO) {
+*/
+/*	ClientDTO updateClient(final Long id, final ClientDTO clientDTO) {
 		final Optional<ClientEntity> optionalClient = this.clientRepository.findById(id);
 		if (optionalClient.isPresent()) {
 			final ClientEntity clientEntity = optionalClient.get();
@@ -123,6 +122,7 @@ final class ClientController {
 		}
 		return ClientDTO.NULL_VALUE;
 	}
+	*/
 	
 	Long addClient(ClientDTO client) {
 		clients.add(client);

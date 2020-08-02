@@ -12,7 +12,7 @@ import javax.persistence.Id;
 final class ClientEntity implements Serializable {
 
 	private static final long serialVersionUID = -1680063932529930775L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Colum
