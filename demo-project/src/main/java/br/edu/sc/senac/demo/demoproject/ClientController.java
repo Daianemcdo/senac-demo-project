@@ -9,16 +9,10 @@ import org.springframework.stereotype.Controller;
 @Controller
 final class ClientController {
 	
-	List<ClientDTO> clients;
+	private List<ClientDTO> clients = new ArrayList<>();
+
 	
-/*	private List<ClientDTO> clients = new ArrayList<>();
-	
-	List<ClientDTO> getAllClients() {
-	return this.clients;
-	
-	}
-	
-	ClientDTO getClient(Long id) {
+/*		ClientDTO getClient(Long id) {
 		if (isNotExistClient(id)) {
 			return ClientDTO.NULL_VALUE;
 		}
@@ -55,7 +49,7 @@ final class ClientController {
 	private boolean isNotExistClient(final Long id) {
 		return id >= clients.size() || id < 0;
 	}
-*/
+}*/
 	
 	private final ClientRepository clientRepository;
 
@@ -86,7 +80,7 @@ final class ClientController {
 
 	List<ClientDTO> getAllClients() {
 		final List<ClientDTO> clients = new ArrayList<>();
-		  final Iterable<ClientEntity> entities = this.clientRepository.findAll();
+		 final Iterable<ClientEntity> entities = this.clientRepository.findAll();
 		  for (final ClientEntity clientEntity : entities) {
 		  clients.add(ClientController.toDTO(clientEntity)); }
 
@@ -94,12 +88,13 @@ final class ClientController {
 	}
 
 	ClientDTO getClient(final Long id) {
-		final Optional<ClientEntity> optionalClient = this.clientRepository.findById(id);
+		Optional<ClientEntity> optionalClient = this.clientRepository.findById(id);
 		if (optionalClient.isPresent()) {
 			return ClientController.toDTO(optionalClient.get());
 		}
 		return ClientDTO.NULL_VALUE;
 	}
+	
 
 	ClientDTO removeClient(final Long id) {
 		final Optional<ClientEntity> optionalClient = this.clientRepository.findById(id);
@@ -136,3 +131,4 @@ final class ClientController {
 		}
 
 }
+

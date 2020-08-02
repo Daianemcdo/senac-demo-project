@@ -4,15 +4,16 @@ public class ClientDTO {
 	
 		public static final ClientDTO NULL_VALUE = new ClientDTO("", "", "");
 		
-		private String nome;
-	    private String dataNascimento;
-	    private String email;
+		private final String nome;
+	    private final String dataNascimento;
+	    private final String email;
 
-	    ClientDTO(String nome, String dataNascimento, String email){
-	        this.nome = nome;
+	    public ClientDTO(final String nome, final String dataNascimento, final String email){
+	    	this.nome = nome;
 	        this.dataNascimento = dataNascimento;
 	        this.email = email;
 	    }
+	    
 	    
 	    public String getNome() {
 	        return nome;

@@ -30,12 +30,12 @@ final class ClientService {
 	@PostMapping("/add-default")
 	public void addDefault(){
 	
-/*		addClient("Everton", "03/05/1900", "everton@senac.br");
+		addClient("Everton", "03/05/1900", "everton@senac.br");
 		addClient("Marciel", "05/06/1980", "marciel@senac.br");
 		addClient("Gabriel", "01/09/2005", "gabriel@senac.br");
 		addClient("Ricardo", "10/07/1950", "ricardo@senac.br");
 		addClient("Yago", "06/11/1999", "yago@senac.br");
-*/
+
 	}
 
 		
@@ -58,10 +58,10 @@ final class ClientService {
 	
 	@GetMapping("/list")
 	public List<ClientDTO> list() {
-//	Poderia ser feito com return this.clients (sendo opcional)
 		return clientController.getAllClients();
     }
-    
+
+
 	@GetMapping("/{id}/details")
 	public ResponseEntity<ClientDTO>getClient(@PathVariable Long id) {
 		ClientDTO client = this.clientController.getClient(id);
@@ -70,12 +70,6 @@ final class ClientService {
 		}
 			return new ResponseEntity<>(client, HttpStatus.OK);
 		}
-	
-//	@PostMapping("/param") Minha tentativa funcionou, abaixo está o código do professor
-//		public ClientDTO id (@RequestParam("nome") String nome, @RequestParam("dataNascimento") String dataNascimento, @RequestParam("email") String email) {
-//			return new ClientDTO (nome, dataNascimento, email);
-//	}
-//}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<ClientDTO> removeClient(@PathVariable Long id){
